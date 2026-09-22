@@ -1,0 +1,25 @@
+.alert-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-card);
+  margin-top: 8px;
+
+  .footer-title {
+    font-weight: 500;
+  }
+
+  .footer-page-num {
+    font-family: var(--font-mono);
+  }
+}
