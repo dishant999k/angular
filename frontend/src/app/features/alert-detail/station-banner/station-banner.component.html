@@ -1,0 +1,40 @@
+<div class="station-banner-card">
+  <div class="banner-left">
+    <div class="broadcast-icon">
+      <!-- Radio / Sensor Broadcast Icon ((o)) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+        <path d="M7.76 7.76a6 6 0 0 0 0 8.48"></path>
+        <circle cx="12" cy="12" r="2" fill="#0284c7"></circle>
+        <path d="M16.24 7.76a6 6 0 0 1 0 8.48"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+    </div>
+    <div class="banner-details">
+      <h1 class="station-heading">AWS_1042 / Primary Meteorological Array</h1>
+      <p class="station-meta">Zone 2 — North Sector • MAST-04 ARRAY • Multi-Sensor Anomaly Flagged</p>
+    </div>
+  </div>
+
+  <div class="banner-right">
+    <div class="critical-badge">
+      <span class="critical-dot"></span>
+      <span class="critical-text">CRITICAL<br>ANOMALY</span>
+    </div>
+
+    <!-- Acknowledge Button: local UI action ready for future API binding -->
+    <button
+      type="button"
+      class="acknowledge-btn"
+      [class.acknowledged]="alertService.isAcknowledgedLocally()"
+      (click)="onAcknowledgeClick()"
+      title="Acknowledge alert"
+    >
+      @if (alertService.isAcknowledgedLocally()) {
+        ✓ Acknowledged
+      } @else {
+        Acknowledge
+      }
+    </button>
+  </div>
+</div>

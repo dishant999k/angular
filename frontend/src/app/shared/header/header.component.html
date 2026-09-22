@@ -1,0 +1,43 @@
+<header class="header-bar">
+  <div class="header-left">
+    <div class="regional-telemetry-badge">
+      <span class="badge-line">Regional</span>
+      <span class="badge-line">Surface</span>
+      <span class="badge-line">Telemetry</span>
+    </div>
+
+    <!-- 24 Operational Stations KPI Badge -->
+    <div class="kpi-operational-badge">
+      <span class="kpi-number">{{ stationService.summary().totalNodesOnline }}</span>
+      <span class="kpi-label">Operational Stations</span>
+    </div>
+
+    <!-- Verified Operating Modes (skyguard/config.py) -->
+    <div class="mode-selector-group">
+      @for (mode of detectionService.modes; track mode) {
+        <button
+          type="button"
+          class="mode-btn"
+          [class.active]="detectionService.currentMode() === mode"
+          (click)="onModeSelect(mode)"
+          [title]="'Operating Mode: ' + mode"
+        >
+          {{ mode }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="header-right">
+    <button type="button" class="refresh-btn" (click)="updateUtcTime()" title="Refresh telemetry sync">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 4v6h-6"></path>
+        <path d="M1 20v-6h6"></path>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+      </svg>
+    </button>
+    <div class="utc-clock">
+      {{ utcTimeString }}
+    </div>
+  </div>
+</header>

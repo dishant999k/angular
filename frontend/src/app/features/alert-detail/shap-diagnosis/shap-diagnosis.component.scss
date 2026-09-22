@@ -1,0 +1,141 @@
+.diagnosis-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.diagnosis-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-light);
+
+  .header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diagnosis-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+  }
+}
+
+.diagnosis-body-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.narrative-column {
+  flex: 1;
+
+  .narrative-intro {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+
+  .diagnosis-points-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text-secondary);
+
+      .point-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-top: 5px;
+        flex-shrink: 0;
+
+        &.bullet-temp { background-color: #ea580c; }
+        &.bullet-humidity { background-color: #ea580c; }
+        &.bullet-pressure { background-color: #0284c7; }
+        &.bullet-conclusion { background-color: #475569; }
+      }
+
+      .point-strong {
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.confidence-column {
+  flex-shrink: 0;
+
+  .confidence-box {
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc;
+    min-width: 170px;
+
+    .confidence-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .confidence-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      margin: 4px 0 8px 0;
+
+      .confidence-number {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+      }
+
+      .confidence-percent {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-secondary);
+      }
+    }
+
+    .severity-pill {
+      background-color: #1e293b;
+      color: #ffffff;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+  }
+}

@@ -1,4 +1,0 @@
-graphs/*.png
-__pycache__/
-**/__pycache__/
-src/skyguard/*.py[cod]

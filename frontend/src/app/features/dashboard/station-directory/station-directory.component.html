@@ -1,0 +1,73 @@
+<div class="directory-card">
+  <div class="directory-header">
+    <div class="title-and-counter">
+      <h2 class="directory-title">Station Directory & Live Telemetry</h2>
+      <span class="nodes-online-badge">{{ stationService.summary().totalNodesOnline }} Nodes Online</span>
+    </div>
+
+    <!-- Status Breakdown Summary -->
+    <div class="summary-breakdown-row">
+      <span class="breakdown-item normal-stat">
+        <strong>{{ stationService.summary().normalCount }}</strong> Normal
+      </span>
+      <span class="breakdown-item watch-stat">
+        <strong>{{ stationService.summary().watchCount }}</strong> Watch
+      </span>
+      <span class="breakdown-item alert-stat">
+        <strong>{{ stationService.summary().alertCount }}</strong> Alert
+      </span>
+      <span class="breakdown-item critical-stat">
+        <strong>{{ stationService.summary().criticalCount }}</strong> Critical
+      </span>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="stations-table">
+      <thead>
+        <tr>
+          <th class="col-status">STATUS</th>
+          <th class="col-station-id">STATION ID</th>
+          <th class="col-zone">ZONE</th>
+          <th class="col-updated">UPDATED</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (station of stationService.filteredStations(); track station.stationId) {
+          <tr
+            [class.row-critical]="station.status === 'Critical'"
+            [class.clickable-row]="station.stationId === 'AWS_1042'"
+            (click)="onRowClick(station)"
+          >
+            <td class="col-status">
+              <span
+                class="status-pill"
+                [class.status-critical]="station.status === 'Critical'"
+                [class.status-alert]="station.status === 'Alert'"
+                [class.status-watch]="station.status === 'Watch'"
+                [class.status-normal]="station.status === 'Normal'"
+              >
+                {{ station.status }}
+              </span>
+            </td>
+            <td class="col-station-id">
+              <span class="station-id-text" [class.highlighted-id]="station.stationId === 'AWS_1042'">
+                {{ station.stationId }}
+              </span>
+            </td>
+            <td class="col-zone">
+              <span class="zone-text">{{ station.zone }}</span>
+            </td>
+            <td class="col-updated">
+              <span class="updated-time">{{ station.updated }}</span>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="empty-message">No matching stations found</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

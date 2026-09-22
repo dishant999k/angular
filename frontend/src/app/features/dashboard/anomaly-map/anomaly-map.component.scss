@@ -1,0 +1,153 @@
+.map-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.map-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+
+  .header-titles {
+    display: flex;
+    flex-direction: column;
+
+    .map-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .map-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+  }
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 12px 16px;
+  position: relative;
+}
+
+.zone-legend-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .legend-color-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    &.zone-1 {
+      color: var(--zone-1-color);
+      .legend-color-dot { background-color: var(--zone-1-color); }
+    }
+    &.zone-2 {
+      color: var(--zone-2-color);
+      .legend-color-dot { background-color: var(--zone-2-color); }
+    }
+    &.zone-3 {
+      color: var(--zone-3-color);
+      .legend-color-dot { background-color: var(--zone-3-color); }
+    }
+    &.zone-4 {
+      color: var(--zone-4-color);
+      .legend-color-dot { background-color: var(--zone-4-color); }
+    }
+  }
+}
+
+.svg-map-wrapper {
+  width: 100%;
+  flex: 1;
+  min-height: 400px;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .synoptic-svg {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: block;
+  }
+}
+
+.station-node {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.05);
+
+    .node-text {
+      font-weight: 700;
+    }
+  }
+
+  .node-text {
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    fill: #334155;
+    pointer-events: none;
+    user-select: none;
+
+    &.text-crit {
+      fill: #dc2626;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes pulseCrit {
+  0% {
+    r: 9;
+    opacity: 0.9;
+  }
+  50% {
+    r: 22;
+    opacity: 0.2;
+  }
+  100% {
+    r: 9;
+    opacity: 0.9;
+  }
+}
+
+.crit-pulse {
+  animation: pulseCrit 2s infinite ease-in-out;
+}
+
+.map-footer-meta {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: left;
+  letter-spacing: 0.4px;
+}

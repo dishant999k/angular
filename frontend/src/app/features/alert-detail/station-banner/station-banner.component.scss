@@ -1,0 +1,108 @@
+.station-banner-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .broadcast-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: var(--primary-blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .banner-details {
+    display: flex;
+    flex-direction: column;
+
+    .station-heading {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .station-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+  }
+}
+
+.banner-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  .critical-badge {
+    background-color: #dc2626;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .critical-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+      animation: pulseDot 1.5s infinite;
+    }
+
+    .critical-text {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-align: left;
+    }
+  }
+
+  .acknowledge-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--border-card);
+    background-color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    &.acknowledged {
+      background-color: #ecfdf5;
+      color: #059669;
+      border-color: #a7f3d0;
+    }
+  }
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
